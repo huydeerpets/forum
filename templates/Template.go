@@ -1,6 +1,7 @@
 package utils
 
 import (
+	"fmt"
 	"forum/models"
 	"forum/utils"
 	"time"
@@ -15,6 +16,7 @@ func FormatTime(time time.Time) string {
 }
 
 func Markdown(content string) string {
+	fmt.Println("你好", string(blackfriday.MarkdownCommon([]byte(utils.NoHtml(content)))))
 	return string(blackfriday.MarkdownCommon([]byte(utils.NoHtml(content))))
 }
 

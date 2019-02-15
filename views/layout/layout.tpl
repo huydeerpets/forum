@@ -13,7 +13,7 @@
 </head>
 <body>
 <div class="wrapper">
-  <nav class="navbar navbar-inverse">
+  <nav class="navbar navbar-default" style="background:rgb(0,158,150)">
     <div class="container">
       <div class="navbar-header">
         <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
@@ -23,21 +23,23 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" style="color:#fff;" href="/">叮叮鸟社区</a>
+        <a class="navbar-brand" style="color:#fff;" target="_blank" href="http://www.dingdingniao.com">叮叮鸟首页</a>
+        <a class="navbar-brand" style="color:#fff;padding-left:30px;" href="/">社区首页</a>
+
       </div>
       <div id="navbar" class="navbar-collapse collapse header-navbar">
         <ul class="nav navbar-nav navbar-right">
-          <li>
+         <!-- <li>
             <a href="/about">关于</a>
-          </li>
+          </li>-->
           {{if .IsLogin}}
           <li>
-            <a href="/user/{{.UserInfo.Username}}">
+            <a style="color:#fff;" href="/user/{{.UserInfo.Username}}">
               {{.UserInfo.Username}}
             </a>
           </li>
           <li>
-            <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown"
+            <a style="color:#fff;" href="javascript:;" class="dropdown-toggle" data-toggle="dropdown"
                data-hover="dropdown">
               设置
               <span class="caret"></span>
@@ -52,8 +54,8 @@
             </ul>
           </li>
           {{else}}
-          <li><a href="/login">登录</a></li>
-          <li><a href="/register">注册</a></li>
+          <li><a style="color:#fff;" href="/login">登录</a></li>
+          <li><a style="color:#fff;" href="/register">注册</a></li>
           {{end}}
         </ul>
       </div>
