@@ -8,8 +8,20 @@
   <title>{{.PageTitle}}</title>
   <link rel="stylesheet" href="/static/bootstrap/css/bootstrap.min.css"/>
   <link rel="stylesheet" href="/static/css/pybbs.css">
+  <link rel="stylesheet" href="/static/bootstrap/css/bootstrap-theme.min.css"> 
+  <link rel="stylesheet" href="/static/bootstrap/css/bootstrap-markdown.min.css">
+
+
+ 
   <script src="//cdn.bootcss.com/jquery/2.2.2/jquery.min.js"></script>
   <script src="//cdn.bootcss.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+  <script src="/static/bootstrap/js/bootstrap-markdown.js"></script>
+  <script src="/static/bootstrap/js/bootstrap-markdown.fr.js"></script>
+  <script src="/static/js/markdown.js"></script>
+  <script src="/static/js/to-markdown.js"></script>
+
+
+
 </head>
 <body>
 <div class="wrapper">
