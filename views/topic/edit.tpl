@@ -13,7 +13,8 @@
           </div>
           <div class="form-group">
             <label for="title">内容</label>
-            <textarea name="content" id="content" rows="15" class="form-control" placeholder="支持Markdown语法哦~">{{.Topic.Content}}</textarea>
+
+            <textarea class="form-control "  id='content' name="content" data-provide="markdown-editable"  style='color:#000' rows="15">{{.Topic.Content}}</textarea>
           </div>
           <div class="form-group">
             <label for="title">版块</label>
@@ -35,9 +36,9 @@
   });
 </script>
 
-<textarea id='editor' style='color:#000'></textarea>
+
 <script type="text/javascript">
- //显示中文提示
+//显示中文提示
     (function ($) {
       $.fn.markdown.messages.zh = {
         'Bold': "粗体",
@@ -65,13 +66,25 @@
       };
     }(jQuery));
     //初始化编辑器
-var $editor = $("#editor");
+var $editor = $("#content");
     $editor.markdown({
       autofocus: true,
       language: 'zh',
-      height:300,
-      onShow: function () { 
-alert("你好");
-      }
-});
+      height:500,
+  dropZoneOptions:{
+            paramName:'markdownImage',//上传的图片name值
+            maxFilesize: 4,//M
+            uploadMultiple:false,
+            createImageThumbnails:true,//是否生成图像的缩略图
+            url:'/ss',
+        }
+
+        });
 </script>
+
+
+<script type="text/javascript">
+$(".content img").addClass('img-responsive');
+</script>
+
+<form id ="myAwesomeDropzone" action="/ss" class="dropzone" method="POST" enctype="multipart/form-data"></form>

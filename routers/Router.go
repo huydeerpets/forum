@@ -73,4 +73,5 @@ func init() {
 	beego.InsertFilter("/permission/delete/:id([0-9]+)", beego.BeforeRouter, filters.HasPermission)
 	beego.Router("/permission/delete/:id([0-9]+)", &controllers.PermissionController{}, "GET:Delete")
 
+	beego.Router("/ss", &controllers.PermissionController{}, "Post:Test")
 }

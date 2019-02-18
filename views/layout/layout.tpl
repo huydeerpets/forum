@@ -10,7 +10,7 @@
   <link rel="stylesheet" href="/static/css/pybbs.css">
   <link rel="stylesheet" href="/static/bootstrap/css/bootstrap-theme.min.css"> 
   <link rel="stylesheet" href="/static/bootstrap/css/bootstrap-markdown.min.css">
-
+  <link rel="stylesheet" href="/static/css/dropzone.css">
 
  
   <script src="//cdn.bootcss.com/jquery/2.2.2/jquery.min.js"></script>
@@ -19,7 +19,7 @@
   <script src="/static/bootstrap/js/bootstrap-markdown.fr.js"></script>
   <script src="/static/js/markdown.js"></script>
   <script src="/static/js/to-markdown.js"></script>
-
+  <script src="/static/js/dropzone.js"></script>
 
 
 </head>
