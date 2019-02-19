@@ -1,7 +1,6 @@
 package controllers
 
 import (
-	"fmt"
 	"forum/filters"
 	"forum/models"
 	"strconv"
@@ -11,11 +10,6 @@ import (
 
 type PermissionController struct {
 	beego.Controller
-}
-
-func (c *PermissionController) Test() {
-	fmt.Println("收到文件")
-	c.Ctx.WriteString("你好")
 }
 
 func (c *PermissionController) List() {

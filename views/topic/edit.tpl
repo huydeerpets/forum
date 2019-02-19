@@ -66,19 +66,21 @@
       };
     }(jQuery));
     //初始化编辑器
-var $editor = $("#content");
-    $editor.markdown({
-      autofocus: true,
-      language: 'zh',
-      height:500,
-  dropZoneOptions:{
+    var $editor = $("#content");
+        $editor.markdown({
+        autofocus: true,
+        language: 'zh',
+        height:500,
+        dropZoneOptions:{
             paramName:'markdownImage',//上传的图片name值
-            maxFilesize: 4,//M
+            maxFilesize: 1,//M
             uploadMultiple:false,
             createImageThumbnails:true,//是否生成图像的缩略图
-            url:'/ss',
-        }
-
+            url:'/topic/dropzone',
+        },
+        onShow: function(e){
+           e.hideButtons('cmdImage')
+        },
         });
 </script>
 
@@ -86,5 +88,3 @@ var $editor = $("#content");
 <script type="text/javascript">
 $(".content img").addClass('img-responsive');
 </script>
-
-<form id ="myAwesomeDropzone" action="/ss" class="dropzone" method="POST" enctype="multipart/form-data"></form>

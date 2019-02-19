@@ -421,7 +421,7 @@ var Dropzone = function (_Emitter) {
         /**
          * The text used before any files are dropped.
          */
-        dictDefaultMessage: "Drop files here to upload",
+        dictDefaultMessage: "拖拽图片到这里，可以插入图片 ^_^ ~",
 
         /**
          * The text that replaces the default message text it the browser is not supported.
@@ -439,7 +439,7 @@ var Dropzone = function (_Emitter) {
          * If the filesize is too big.
          * `{{filesize}}` and `{{maxFilesize}}` will be replaced with the respective configuration values.
          */
-        dictFileTooBig: "File is too big ({{filesize}}MiB). Max filesize: {{maxFilesize}}MiB.",
+        dictFileTooBig: "文件过大 ({{filesize}}MiB).最大: {{maxFilesize}}MiB.",
 
         /**
          * If the file doesn't match the file type.
@@ -1194,7 +1194,7 @@ var Dropzone = function (_Emitter) {
       }
 
       if (this.element.classList.contains("dropzone") && !this.element.querySelector(".dz-message")) {
-        this.element.appendChild(Dropzone.createElement("<div class=\"dz-default dz-message\"><span>" + this.options.dictDefaultMessage + "</span></div>"));
+        this.element.appendChild(Dropzone.createElement("<div class='dz-default dz-message'><div class='glyphicon glyphicon-picture' style='padding-right: 5px;'></div><span>" + this.options.dictDefaultMessage + "</span></div>"));
       }
 
       if (this.clickableElements.length) {

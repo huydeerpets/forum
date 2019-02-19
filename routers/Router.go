@@ -27,6 +27,7 @@ func init() {
 	beego.Router("/topic/edit/:id([0-9]+)", &controllers.TopicController{}, "POST:Update")
 	beego.InsertFilter("/topic/delete/:id([0-9]+)", beego.BeforeRouter, filters.HasPermission)
 	beego.Router("/topic/delete/:id([0-9]+)", &controllers.TopicController{}, "GET:Delete")
+	beego.Router("/topic/dropzone", &controllers.TopicController{}, "Post:Dropzone")
 
 	beego.InsertFilter("/reply/save", beego.BeforeRouter, filters.FilterUser)
 	beego.Router("/reply/save", &controllers.ReplyController{}, "POST:Save")
@@ -73,5 +74,4 @@ func init() {
 	beego.InsertFilter("/permission/delete/:id([0-9]+)", beego.BeforeRouter, filters.HasPermission)
 	beego.Router("/permission/delete/:id([0-9]+)", &controllers.PermissionController{}, "GET:Delete")
 
-	beego.Router("/ss", &controllers.PermissionController{}, "Post:Test")
 }

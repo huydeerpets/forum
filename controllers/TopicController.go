@@ -1,9 +1,12 @@
 package controllers
 
 import (
+	"fmt"
 	"forum/filters"
 	"forum/models"
 	"strconv"
+
+	"io/ioutil"
 
 	"github.com/astaxie/beego"
 )
@@ -109,4 +112,47 @@ func (c *TopicController) Delete() {
 	} else {
 		c.Ctx.WriteString("话题不存在")
 	}
+}
+
+func (c *TopicController) Dropzone() {
+	newfileName := ""
+	//遍历打印所有的文件名
+	var s []string
+	s, _ = GetAllFile("./static/upload/topicimg", s)
+
+	if len(s) == 0 {
+		newfileName = "1"
+	} else {
+		newfileName = strconv.Itoa(len(s) + 1)
+	}
+
+	//保存文件
+	err := c.SaveToFile("markdownImage", "./static/upload/topicimg/"+newfileName+".jpg") //存文件
+	if err != nil {
+		fmt.Println("上传图片失败", err)
+		c.Ctx.WriteString("上传图片失败！！！")
+	}
+	c.Ctx.WriteString("/static/upload/topicimg/" + newfileName + ".jpg")
+}
+
+func GetAllFile(pathname string, s []string) ([]string, error) {
+	rd, err := ioutil.ReadDir(pathname)
+	if err != nil {
+		fmt.Println("read dir fail:", err)
+		return s, err
+	}
+	for _, fi := range rd {
+		if fi.IsDir() {
+			fullDir := pathname + "/" + fi.Name()
+			s, err = GetAllFile(fullDir, s)
+			if err != nil {
+				fmt.Println("read dir fail:", err)
+				return s, err
+			}
+		} else {
+			fullName := pathname + "/" + fi.Name()
+			s = append(s, fullName)
+		}
+	}
+	return s, nil
 }
