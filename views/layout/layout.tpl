@@ -35,7 +35,9 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" style="color:#fff;" target="_blank" href="http://www.dingdingniao.com">叮叮鸟首页</a>
+        <a class="navbar-brand" style="color:#fff;" target="_blank" href="http://www.dingdingniao.com">
+         <img alt="" src="/static/imgs/logo2.png" style="margin-top:-17px; ;width: 90px;">
+        </a>
         <a class="navbar-brand" style="color:#fff;padding-left:30px;" href="/">社区首页</a>
 
       </div>

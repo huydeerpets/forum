@@ -13,7 +13,8 @@
           </div>
           <div class="form-group">
             <label for="title">内容</label>
-            <textarea name="content" id="content" rows="15" class="form-control" placeholder="支持Markdown语法哦~"></textarea>
+
+            <textarea class="form-control "  id='content' name="content" data-provide="markdown-editable"  style='color:#000' rows="15">{{.Topic.Content}}</textarea>
           </div>
           <div class="form-group">
             <label for="title">版块</label>
@@ -29,3 +30,57 @@
     </div>
   </div>
 </div>
+
+
+
+<script type="text/javascript">
+//显示中文提示
+    (function ($) {
+      $.fn.markdown.messages.zh = {
+        'Bold': "粗体",
+	    'Italic': "斜体",
+        'Heading': "标题",
+        'URL/Link': "链接",
+        'Image': "图片",
+        'List': "列表",
+        'Unordered List': "无序列表",
+        'Ordered List': "有序列表",
+        'Code': "代码",
+        'Quote': "引用",
+        'Preview': "预览",
+        'strong text': "粗体",
+        'emphasized text': "强调",
+        'heading text': "标题",
+        'enter link description here': "输入链接说明",
+        'Insert Hyperlink': "URL地址",
+        'enter image description here': "输入图片说明",
+        'Insert Image Hyperlink': "图片URL地址",
+        'enter image title here': "在这里输入图片标题",
+        'list text here': "这里是列表文本",
+        'code text here': "这里输入代码",
+        'quote here': "这里输入引用文本"
+      };
+    }(jQuery));
+    //初始化编辑器
+    var $editor = $("#content");
+        $editor.markdown({
+        autofocus: true,
+        language: 'zh',
+        height:500,
+        dropZoneOptions:{
+            paramName:'markdownImage',//上传的图片name值
+            maxFilesize: 1,//M
+            uploadMultiple:false,
+            createImageThumbnails:true,//是否生成图像的缩略图
+            url:'/topic/dropzone',
+        },
+        onShow: function(e){
+           e.hideButtons('cmdImage')
+        },
+        });
+</script>
+
+
+<script type="text/javascript">
+$(".content img").addClass('img-responsive');
+</script>
