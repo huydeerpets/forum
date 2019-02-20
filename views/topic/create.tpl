@@ -31,6 +31,15 @@
   </div>
 </div>
 
+<script type="text/javascript">
+    $('form').bind('submit', function(){
+        if($("#title").val()==""){
+        alert("标题不能为空！");
+        return false;
+        }
+    })
+</script>
+
 
 
 <script type="text/javascript">
@@ -62,9 +71,14 @@
       };
     }(jQuery));
     //初始化编辑器
+    var undos = [];
+    var cursor =0;//撤销的游标
+    var isUndo=false;
+
     var $editor = $("#content");
         $editor.markdown({
         autofocus: true,
+        iconlibrary: 'glyph',
         language: 'zh',
         height:500,
         dropZoneOptions:{
@@ -77,8 +91,64 @@
         onShow: function(e){
            e.hideButtons('cmdImage')
         },
+        onChange: function(e){
+            onChange(e.getContent());
+          },
+        additionalButtons: [
+            [{
+                  name: "groupCustom",
+                  data: [{
+                    name: "cmdUndo",
+                    title: "后退",
+                    icon: "glyphicon glyphicon-picture",
+                    callback: function(e){
+                        isUndo=true;
+                        if(undos.length>0 && cursor>0){
+                            $editor.val("");
+                            cursor = cursor-1;
+                            lastContent= undos[cursor]
+                            e.setContent(lastContent)
+                        }else{
+                            alert("没有可以后退的操作。");
+                        }
+                    }
+                  },
+                  {
+                    name: "cmdUndo2",
+                    title: "前进",
+                    icon: "glyphicon glyphicon-picture",
+                    callback: function(e){
+                        isUndo=true;
+                        if(undos.length>0 && cursor< undos.length-1){
+                            $editor.val("");
+                            cursor = cursor+1;
+                            lastContent= undos[cursor]
+                            e.setContent(lastContent)
+                        }else{
+                            alert("没有可前进的操作。");
+                        }
+                    }
+                  }]
+            }]
+          ]
         });
+
+
+        function onChange(content){
+                    if(isUndo){
+                        isUndo=false;
+                        return;
+                    }
+                    if(content==undos[undos.length-1]){
+                        return;
+                    }else{
+                        undos.push(content);
+                        cursor = undos.length-1;//更新游标到最后的位置。
+                        //console.log(undos)
+                    }
+        }
 </script>
+
 
 
 <script type="text/javascript">

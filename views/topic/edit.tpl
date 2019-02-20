@@ -72,7 +72,8 @@
 
     var $editor = $("#content");
         $editor.markdown({
-        autofocus: true,
+        autofocus: false,
+        iconlibrary: 'glyph',
         language: 'zh',
         height:500,
         dropZoneOptions:{
@@ -94,13 +95,13 @@
                   data: [{
                     name: "cmdUndo",
                     title: "后退",
-                    icon: "glyphicon glyphicon-repeat",
+                    icon: "glyphicon glyphicon-picture",
                     callback: function(e){
+                        isUndo=true;
                         if(undos.length>0 && cursor>0){
                             $editor.val("");
                             cursor = cursor-1;
                             lastContent= undos[cursor]
-                            isUndo=true;
                             e.setContent(lastContent)
                         }else{
                             alert("没有可以后退的操作。");
@@ -110,13 +111,13 @@
                   {
                     name: "cmdUndo2",
                     title: "前进",
-                    icon: "glyphicon glyphicon-repeat",
+                    icon: "glyphicon glyphicon-picture",
                     callback: function(e){
+                        isUndo=true;
                         if(undos.length>0 && cursor< undos.length-1){
                             $editor.val("");
                             cursor = cursor+1;
                             lastContent= undos[cursor]
-                            isUndo=true;
                             e.setContent(lastContent)
                         }else{
                             alert("没有可前进的操作。");
