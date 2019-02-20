@@ -485,8 +485,10 @@
                                 caretPos = textarea.prop('selectionStart');
                             });
                             this.on('success', function(file, path) {
+                                caretPos = textarea.prop('selectionStart');
                                 var text = textarea.val();
                                 textarea.val(text.substring(0, caretPos) + '\n![图片描述](' + path + ')\n' + text.substring(caretPos));
+                                onChange(textarea.val());
                             });
                             this.on('error', function(file, error, xhr) {
                                 console.log('Error:', error);
