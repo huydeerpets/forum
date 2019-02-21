@@ -73,7 +73,7 @@
     var $editor = $("#content");
         $editor.markdown({
         autofocus: false,
-        iconlibrary: 'glyph',
+        hiddenButtons:'cmdImage',
         language: 'zh',
         height:500,
         dropZoneOptions:{
@@ -82,9 +82,6 @@
             uploadMultiple:false,
             createImageThumbnails:true,//是否生成图像的缩略图
             url:'/topic/dropzone',
-        },
-        onShow: function(e){
-           e.hideButtons('cmdImage')
         },
         onChange: function(e){
             onChange(e.getContent());
@@ -95,7 +92,7 @@
                   data: [{
                     name: "cmdUndo",
                     title: "后退",
-                    icon: "glyphicon glyphicon-picture",
+                    icon: "glyphicon glyphicon-arrow-left",
                     callback: function(e){
                         isUndo=true;
                         if(undos.length>0 && cursor>0){
@@ -111,7 +108,7 @@
                   {
                     name: "cmdUndo2",
                     title: "前进",
-                    icon: "glyphicon glyphicon-picture",
+                    icon: "glyphicon glyphicon-arrow-right",
                     callback: function(e){
                         isUndo=true;
                         if(undos.length>0 && cursor< undos.length-1){
