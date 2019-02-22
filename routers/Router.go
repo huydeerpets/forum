@@ -28,6 +28,7 @@ func init() {
 	beego.InsertFilter("/topic/delete/:id([0-9]+)", beego.BeforeRouter, filters.HasPermission)
 	beego.Router("/topic/delete/:id([0-9]+)", &controllers.TopicController{}, "GET:Delete")
 	beego.Router("/topic/dropzone", &controllers.TopicController{}, "Post:Dropzone")
+	beego.Router("/topic/news", &controllers.TopicController{}, "Get:News")
 
 	beego.InsertFilter("/reply/save", beego.BeforeRouter, filters.FilterUser)
 	beego.Router("/reply/save", &controllers.ReplyController{}, "POST:Save")

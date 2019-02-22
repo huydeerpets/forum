@@ -156,3 +156,15 @@ func GetAllFile(pathname string, s []string) ([]string, error) {
 	}
 	return s, nil
 }
+
+func (c *TopicController) News() {
+	fmt.Println("获取新闻")
+	t := &models.Topic{}
+	news := t.NewsTopic()
+	//	for _, v := range news {
+	//		fmt.Println(v.Title, v.Section, v.Time)
+	//	}
+
+	c.Data["json"] = news
+	c.ServeJSON()
+}

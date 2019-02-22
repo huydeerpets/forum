@@ -88,3 +88,30 @@ func DeleteTopicByUser(user *User) {
 	o := orm.NewOrm()
 	o.Raw("delete from topic where user_id = ?", user.Id).Exec()
 }
+
+//新闻模型
+type News struct {
+	Id      int
+	Title   string
+	Section string
+	Time    time.Time
+}
+
+//web获取新闻
+func (t *Topic) NewsTopic() []News {
+	o := orm.NewOrm()
+	qs := o.QueryTable("topic")
+	qs = qs.Filter("user_id", 1)
+	qs = qs.RelatedSel()
+	qs = qs.Limit(3)
+
+	var list []Topic
+	qs.All(&list, "id", "title", "in_time", "section_id")
+
+	var news []News
+	for _, v := range list {
+		temp := News{v.Id, v.Title, v.Section.Name, v.InTime}
+		news = append(news, temp)
+	}
+	return news
+}
